@@ -31,7 +31,7 @@ router.post("/signin", async(req, res) => {
     if (!user) return res.status(401).send("The email doen' exists");
     if (user.password !== password) return res.status(401).send("Wrong Password");
 
-    const token = jwt.sign({ _id: user._id }, "marcador");
+    const token = jwt.sign({ _id: user._id }, "secretkey");
 
     return res.status(200).json({ token });
 });
