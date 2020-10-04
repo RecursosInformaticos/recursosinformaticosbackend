@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 //     res.send("hello 2");
 // });
 
-router.post("/recursos", verifyToken, async(req, res) => {
+router.post("/recursos", async(req, res) => {
     const { nombre } = req.body;
     const name = await Recursos.findOne({ nombre });
     if (name) {
@@ -81,7 +81,7 @@ router.put("/recursos/:recursoId", async(req, res) => {
 });
 
 //DELETE BOOK BASED ON ID
-router.delete("/recursos/:recursoId", verifyToken, async(req, res) => {
+router.delete("/recursos/:recursoId", async(req, res) => {
     const recurso = await Recursos.findByIdAndRemove(req.params.recursoId);
     if (!recurso) res.status(404).send("Recurso with id not found");
     res.send(recurso);
