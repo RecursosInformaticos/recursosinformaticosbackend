@@ -65,7 +65,7 @@ router.get("/recursos/:recursoId", async(req, res) => {
 });
 
 //UPDATE BOOK BASED ON ID
-router.put("/recursos/:recursoId", verifyToken, async(req, res) => {
+router.put("/recursos/:recursoId", async(req, res) => {
     const updatedRecurso = await Recursos.findByIdAndUpdate(
         req.params.recursoId, {
             nombre: req.body.nombre,
